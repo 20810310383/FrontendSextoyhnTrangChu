@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+		
+	 <!-- End Google Tag Manager -->
+	 <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0">
+	 <meta name="robots" content="max-image-preview:large, max-video-preview:-1">
+	 <link rel="canonical" href="/">
+	 <title>Shop Sextoy ( Sex Toy, Đồ Chơi Người Lớn, Đồ Chơi Tình Dục ) Dương Vật Giả, Âm Đạo Giả, Trứng Rung</title>
+	 <meta name="description" content="Oichin bán sextoy với chủ đạo là sex toy cao cấp chính hãng của các thương hiệu đồ chơi tình dục nổi tiếng thế giới. Với hệ thống shop tình yêu khắp Việt Nam, bạn sẽ mua đồ chơi người lớn giá rẻ nhất. Đội ngũ chuyên gia sẽ tư vấn từ những dụng cụ thủ dâm, tự sướng hợp với sở thích của riêng bạn, cho tới những đồ chơi tình yêu cho cặp đôi cùng thăng hoa">
+	 <meta property="og:title" content="Oichin bán sextoy cao cấp - đồ chơi tình dục cho người lớn">
+	 <meta property="og:description" content="Oichin bán sextoy với chủ đạo là sex toy cao cấp chính hãng của các thương hiệu đồ chơi tình dục nổi tiếng thế giới. Với hệ thống shop tình yêu khắp Việt Nam, bạn sẽ mua đồ chơi người lớn giá rẻ nhất. Đội ngũ chuyên gia sẽ tư vấn từ những dụng cụ thủ dâm, tự sướng hợp với sở thích của riêng bạn, cho tới những đồ chơi tình yêu cho cặp đôi cùng thăng hoa">
+	 <meta property="og:locale" content="vi_VN">
+	 <meta property="og:image" content="https://oichin.com/css/icon/oichin-store-inside.webp">
+	 <meta property="og:type" content="website">
+	 <meta property="og:url" content="https://oichin.com">
+	 <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+	 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+	 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	 <meta name="csrf-token" content="xqWS02Ggo9he0txMweW60jwbGYX3tClfnw7L5Lc0">
+	 <script src="js/jquery.min.js"></script>
+	 <script src="js/functions.js?ver=0.12"></script>
+	 <link rel="stylesheet" type="text/css" href="css/reset.css?ver=1.1">
+	 <link rel="stylesheet" type="text/css" href="css/client-v3.min.css?ver=0.238">
+	 
+  </head>
+  <body>
+
+	<script>
+        var APP_URL = "#";
+        $(document).ready(function () {
+            const $lazyImages = $(".js_img_lazy");
+
+            // Kiểm tra trình duyệt có hỗ trợ IntersectionObserver
+            if ("IntersectionObserver" in window) {
+                const observer = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            const $img = $(entry.target);
+                            const dataSrc = $img.attr("data_src"); // Lấy giá trị từ thuộc tính data_src
+
+                            if (dataSrc) {
+                                $img.attr("src", dataSrc); // Gán giá trị data_src vào src
+                                observer.unobserve(entry.target); // Dừng quan sát ảnh đã tải
+                            }
+                        }
+                    });
+                });
+
+                // Gắn observer vào ảnh đã có sẵn
+                $lazyImages.each(function () {
+                    observer.observe(this);
+                });
+
+                // Gắn observer vào ảnh mới khi tải AJAX
+                $(document).on("ajaxComplete", function () {
+                    $(".js_img_lazy").each(function () {
+                        if (!$(this).data("observed")) {
+                            observer.observe(this);
+                            $(this).data("observed", true); // Đánh dấu đã được thêm observer
+                        }
+                    });
+                });
+            } else {
+                // Fallback cho trình duyệt không hỗ trợ IntersectionObserver
+                $(document).on("ajaxComplete", function () {
+                    $(".js_img_lazy").each(function () {
+                        const $img = $(this);
+                        const dataSrc = $img.attr("data_src");
+
+                        if (dataSrc) {
+                            $img.attr("src", dataSrc);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+
+
+	 <div id="root"></div>    
+     <script type="module" src="/src/main.jsx"></script>
+    
+     
+  </body>
+</html>
+
