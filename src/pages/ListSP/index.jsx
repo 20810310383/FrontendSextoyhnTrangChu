@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Product from "../../components/Product/Product"
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { fetchOneTheLoai } from "../../services/loaiSPAPI";
+import { fetchAllTheLoai, fetchOneTheLoai } from "../../services/loaiSPAPI";
 import { fetchAllProduct } from "../../services/productAPI";
 import { Col, Divider, Pagination, Row, Select, Typography } from "antd";
 const { Title } = Typography;
@@ -23,7 +23,22 @@ const ListSP = () => {
     const [sortField, setSortField] = useState("default");
     const [sortOrder, setSortOrder] = useState(null);
 
-    const dataTheLoai = useSelector(state => state.category.listCategorys.data)
+    // const dataTheLoai = useSelector(state => state.category.listCategorys.data)
+    const [dataTheLoai, setDataTheLoai] = useState([])
+
+    useEffect(() => {
+        fetchListTL()
+    }, [])
+
+    const fetchListTL = async (id) => {
+        let query = `page=1&limit=9999`           
+    
+        const res = await fetchAllTheLoai(query)
+        console.log("res TL: ", res);
+        if (res && res.data) {
+            setDataTheLoai(res.data)
+        }
+    }
 
     const fetchOneLSP = async () => {
         let query = ''
