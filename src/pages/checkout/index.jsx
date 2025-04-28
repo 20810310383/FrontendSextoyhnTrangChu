@@ -187,6 +187,7 @@ const CheckoutPage = () => {
         // window.location.href = '/'
         message.warning("Bạn vừa tắt form thanh toán. Đơn hàng của bạn chưa được thanh toán, bạn có thể xem chi tiết đơn hàng tại email của mình!")
     }
+    const [activeTabKey, setActiveTabKey] = useState(0);
 
     const banks = [
         {
@@ -202,6 +203,10 @@ const CheckoutPage = () => {
           bankCode: "970415",
         },
     ];
+
+    const currentBank = banks[activeTabKey];
+    const prefix = currentBank.name === "VietinBank" ? "SEVQR" : "DH";
+
   
   return (
     <main style={{ padding: '20px', backgroundColor: '#f0f2f5' }}>
@@ -417,7 +422,7 @@ const CheckoutPage = () => {
             <Modal
                 title={
                 <div style={{ textAlign: "center", fontSize: "20px", color: "#333" }}>
-                    Mã QR Code Thanh Toán Đơn Hàng: <span style={{ color: "#1677ff" }}>DH{mangaunhien}</span>
+                    Mã QR Code Thanh Toán Đơn Hàng: <span style={{ color: "#1677ff" }}>{prefix}{mangaunhien}</span>
                 </div>
                 }
                 open={openModal}
@@ -436,8 +441,11 @@ const CheckoutPage = () => {
                     </h4>
                 </div>
 
-                <Tabs defaultActiveKey="0" centered>
-                    {banks.map((bank, index) => (
+                <Tabs defaultActiveKey="0" centered onChange={(key) => setActiveTabKey(Number(key))}>
+                    {banks.map((bank, index) => {
+                        const prefixNoiDung = bank.name === "VietinBank" ? "SEVQR" : "DH";
+
+                        return (
                     <TabPane tab={bank.name} key={index}>
                         <div
                         style={{
@@ -457,13 +465,13 @@ const CheckoutPage = () => {
 
                         <h4 style={{ color: "#1d39c4", textAlign: "center", marginBottom: 8 }}>
                             📝 Nội dung chuyển khoản:&nbsp;
-                            <span style={{ color: "#ff4d4f", fontWeight: "bold" }}>DH{mangaunhien}</span>
+                            <span style={{ color: "#ff4d4f", fontWeight: "bold" }}>{prefixNoiDung}{mangaunhien}</span>
                             <Button
                             size="small"
                             type="link"
                             icon={<CopyOutlined />}
                             onClick={() => {
-                                navigator.clipboard.writeText(`DH${mangaunhien}`);
+                                navigator.clipboard.writeText(`${prefixNoiDung}${mangaunhien}`);
                                 message.success("Đã sao chép nội dung chuyển khoản!");
                             }}
                             style={{ marginLeft: 8 }}
@@ -501,13 +509,13 @@ const CheckoutPage = () => {
                         <div style={{ textAlign: "center" }}>
                         <Image
                             width={350}
-                            src={`https://img.vietqr.io/image/${bank.bankCode}-${bank.accountNumber}-print.png?amount=${soTienCanTT}&addInfo=DH${mangaunhien}&accountName=${bank.accountName.replace(/ /g, "+")}`}
+                            src={`https://img.vietqr.io/image/${bank.bankCode}-${bank.accountNumber}-print.png?amount=${soTienCanTT}&addInfo=${prefixNoiDung}${mangaunhien}&accountName=${bank.accountName.replace(/ /g, "+")}`}
                             alt={`QR ${bank.name}`}
                             style={{ borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
                         />
                         </div>
-                    </TabPane>
-                    ))}
+                    </TabPane>)
+                    })}
                 </Tabs>
             </Modal>
 
