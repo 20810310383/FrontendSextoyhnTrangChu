@@ -61,10 +61,14 @@ const Header = () => {
           />
 
           {/* Logo */}
-          <a href="/" className="logoo" aria-label="Logo Oichin">
+          <a href="/" className="logoo" aria-label="Logo Oichin" style={{
+            display: "flex",
+            alignItems: "center",            
+            height: "70px"
+          }}>
             {/* <div className="icon_logo_oichin_full" />
             <div className="icon_logo_oichin_short" /> */}
-            <img src={'/css/icon/Sex.png'} style={{ height:"60px" }} />
+            <img src={'/css/icon/Sex.png'} style={{ height:"100px", objectFit:'contain', display:"block" }} />
           </a>
 
          

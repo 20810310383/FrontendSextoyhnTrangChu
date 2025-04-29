@@ -22,12 +22,12 @@ const Footer = () => {
           </a>
         </li>
         <li className="support_phone">
-          <span className="icon_phone-footer"><img src="css/icon/icon_viettel.svg" alt="Hotline Viettel 0337323389" loading="lazy" width={20} height={11} /></span>
-          <a href="tel:0337323389" aria-label="Gọi điện cho SEXTOYHN - 0337323389"> 0337 323 389</a>
+          <span ><img src="css/icon/icon_zalo.svg" alt="Hotline Viettel 0337323389" loading="lazy" width={20} height={11} /></span>
+          <a href="tel:0337323389" aria-label="Gọi điện cho SEXTOYHN - 0337323389">&nbsp; 0337 323 389</a>
         </li>
         <li className="support_phone">
-          <span className="icon_phone-footer"><img src="css/icon/icon_viettel.svg" alt="Hotline Viettel 0365072506" width={20} height={11} /></span>
-          <a href="tel:0365072506" aria-label="Gọi điện cho SEXTOYHN - 0365072506"> 0365 072 506</a>
+          <span ><img src="css/icon/icon_zalo.svg" alt="Hotline Viettel 0365072506" width={20} height={11} /></span>
+          <a href="tel:0365072506" aria-label="Gọi điện cho SEXTOYHN - 0365072506">&nbsp; 0365 072 506</a>
         </li>
        
       </ul>
